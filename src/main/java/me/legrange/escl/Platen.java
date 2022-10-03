@@ -5,7 +5,7 @@ import org.simpleframework.xml.Element;
 public class Platen {
 
     @Element(name = "PlatenInputCaps")
-    private  PlatenInputCaps platenInputCaps;
+    private InputCaps platenInputCaps;
 
     @Override
     public String toString() {

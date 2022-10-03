@@ -1,5 +1,6 @@
 package me.legrange.escl.rest;
 
+import com.google.gson.GsonBuilder;
 import me.legrange.escl.ScanSettings;
 import me.legrange.escl.ScannerCapabilities;
 import me.legrange.escl.ScannerStatus;
@@ -19,11 +20,15 @@ public class EsclApi {
 
     private final EsclService escl;
 
+    private static void print(Object object) {
+       System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(object));
+    }
+
     public static void main(String[] args) throws EsclException {
-        EsclApi api = new EsclApi("http://192.168.1.30/eSCL/");
+        EsclApi api = new EsclApi("http://192.168.1.198/eSCL/");
  //       EsclApi api = new EsclApi("http://192.168.1.198/eSCL/");
-//     System.out.println(api.getScannerCapabilities());
-      System.out.println(api.getScannerStatus());
+     print(api.getScannerCapabilities());
+//      System.out.println(api.getScannerStatus());
 //        var settings = new ScanSettings();
 //        settings.setInputSource("Platen");
 //        api.createScanJob(settings);

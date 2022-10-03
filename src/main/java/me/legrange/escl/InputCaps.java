@@ -5,7 +5,7 @@ import org.simpleframework.xml.ElementList;
 
 import java.util.List;
 
-public class PlatenInputCaps {
+public class InputCaps {
 
     @Element(name = "MinWidth")
     private int minWidth;

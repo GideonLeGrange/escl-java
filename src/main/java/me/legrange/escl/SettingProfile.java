@@ -9,7 +9,7 @@ public class SettingProfile {
 
     @ElementList(name = "ColorModes", type = String.class, entry = "ColorMode")
     private List<String> colorModes;
-    @ElementList(name = "ContentTypes", type = String.class, entry = "ContentType")
+    @ElementList(name = "ContentTypes", type = String.class, entry = "ContentType", required = false)
     private List<String> contentTypes;
     @ElementList(name = "DocumentFormats", type = String.class, entry = "DocumentFormat")
     private List<String> documentFormats;
