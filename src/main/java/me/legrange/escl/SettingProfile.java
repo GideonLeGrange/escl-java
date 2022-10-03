@@ -2,6 +2,7 @@ package me.legrange.escl;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 import java.util.List;
 
@@ -13,22 +14,34 @@ public class SettingProfile {
     private List<String> contentTypes;
     @ElementList(name = "DocumentFormats", type = String.class, entry = "DocumentFormat")
     private List<String> documentFormats;
-    @Element(name = "SupportedResolutions", type = DiscreteResolutions.class)
+    @Element(name = "SupportedResolutions")
     private DiscreteResolutions supportedResolutions;
     @ElementList(name = "ColorSpaces", type = String.class, entry = "ColorSpace")
     private List<String> colorSpaces;
     @ElementList(name = "CcdChannels", type = String.class, entry = "CcdChannel")
     private List<String> ccdChannels;
 
-    @Override
-    public String toString() {
-        return "SettingProfile{" +
-                "colorModes=" + colorModes +
-                ", contentTypes=" + contentTypes +
-                ", documentFormats=" + documentFormats +
-                ", supportedResolutions=" + supportedResolutions +
-                ", colorSpaces=" + colorSpaces +
-                ", ccdChannels=" + ccdChannels +
-                '}';
+    public List<String> getColorModes() {
+        return colorModes;
+    }
+
+    public List<String> getContentTypes() {
+        return contentTypes;
+    }
+
+    public List<String> getDocumentFormats() {
+        return documentFormats;
+    }
+
+    public DiscreteResolutions getSupportedResolutions() {
+        return supportedResolutions;
+    }
+
+    public List<String> getColorSpaces() {
+        return colorSpaces;
+    }
+
+    public List<String> getCcdChannels() {
+        return ccdChannels;
     }
 }

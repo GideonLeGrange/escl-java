@@ -17,6 +17,21 @@ public class ScannerStatus {
     @ElementList(name = "Jobs", type = JobInfo.class, entry = "JobInfo", required = false)
     private List<JobInfo> jobs;
 
+    public String getVersion() {
+        return version;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getAdfState() {
+        return adfState;
+    }
+
+    public List<JobInfo> getJobs() {
+        return jobs;
+    }
 
     @Override
     public String toString() {

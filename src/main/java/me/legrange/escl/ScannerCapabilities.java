@@ -22,6 +22,38 @@ public class ScannerCapabilities {
     @Element(name = "Adf", required = false)
     private Adf adf;
 
+    public String getUuid() {
+        return uuid;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getMakeAndModel() {
+        return makeAndModel;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public String getAdminUri() {
+        return adminUri;
+    }
+
+    public String getIconUri() {
+        return iconUri;
+    }
+
+    public Platen getPlaten() {
+        return platen;
+    }
+
+    public Adf getAdf() {
+        return adf;
+    }
+
     @Override
     public String toString() {
         return "ScannerCapabilities{" +

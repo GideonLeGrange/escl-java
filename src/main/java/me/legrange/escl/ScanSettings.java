@@ -1,11 +1,21 @@
 package me.legrange.escl;
 
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+
+import java.util.List;
+
 public class ScanSettings {
 
+    @Element(name = "Version")
     private String version;
+    @Element(name = "Intent")
     private String intent;
-    private ScanRegions scanRegions;
+    @ElementList(name = "ScanRegions")
+    private List<ScanRegion> scanRegions;
+    @Element(name = "InputSource")
     private String inputSource;
+    @Element(name = "ColorMode")
     private String colorMode;
 
     public String getVersion() {
@@ -24,11 +34,11 @@ public class ScanSettings {
         this.intent = intent;
     }
 
-    public ScanRegions getScanRegions() {
+    public List<ScanRegion> getScanRegions() {
         return scanRegions;
     }
 
-    public void setScanRegions(ScanRegions scanRegions) {
+    public void setScanRegions(List<ScanRegion> scanRegions) {
         this.scanRegions = scanRegions;
     }
 

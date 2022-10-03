@@ -22,6 +22,38 @@ public class JobInfo {
     @ElementList(name = "JobStateReasons", required = false, type = String.class, entry="JobStateReason")
     private List<String> reason;
 
+    public String getJobUri() {
+        return jobUri;
+    }
+
+    public String getUuid() {
+        int idx = uuid.lastIndexOf(":");
+        if (idx > 0) {
+            return uuid.substring(idx + 1);
+        }
+        return uuid;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getImagesCompleted() {
+        return imagesCompleted;
+    }
+
+    public int getImagesToTransfer() {
+        return imagesToTransfer;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public List<String> getReason() {
+        return reason;
+    }
+
     @Override
     public String toString() {
         return "JobInfo{" +
