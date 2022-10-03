@@ -5,26 +5,30 @@ import java.util.List;
 public final class ScannerRecord {
 
     private final String uuid;
-    private   String version;
-    private   String adminUrl;
-    private  String representation;
-    private  String resource;
-    private  String makeModel;
-    private  String note;
-    private  List<String> mimeTypes;
-    private  List<String> colorSpace;
-    private  List<String> inputSource;
+    private final List<String> addresses;
+    private final int port;
+    private String version;
+    private String adminUrl;
+    private String representation;
+    private String resource;
+    private String makeModel;
+    private String note;
+    private List<String> mimeTypes;
+    private List<String> colorSpace;
+    private List<String> inputSource;
     private String duplex;
 
-     ScannerRecord(String uuid) {
+     ScannerRecord(String uuid, List<String> addresses, int port) {
         this.uuid = uuid;
+        this.addresses = addresses;
+        this.port = port;
     }
 
-    private String getUuid() {
+    public String getUuid() {
         return uuid;
     }
 
-    private String getVersion() {
+    public String getVersion() {
         return version;
     }
 
@@ -32,7 +36,7 @@ public final class ScannerRecord {
         this.version = version;
     }
 
-    private String getAdminUrl() {
+    public String getAdminUrl() {
         return adminUrl;
     }
 
@@ -40,7 +44,7 @@ public final class ScannerRecord {
         this.adminUrl = adminUrl;
     }
 
-    private String getRepresentation() {
+    public String getRepresentation() {
         return representation;
     }
 
@@ -48,7 +52,7 @@ public final class ScannerRecord {
         this.representation = representation;
     }
 
-    private String getResource() {
+    public String getResource() {
         return resource;
     }
 
@@ -56,7 +60,7 @@ public final class ScannerRecord {
         this.resource = resource;
     }
 
-    private String getMakeModel() {
+    public String getMakeModel() {
         return makeModel;
     }
 
@@ -64,7 +68,7 @@ public final class ScannerRecord {
         this.makeModel = makeModel;
     }
 
-    private String getNote() {
+    public String getNote() {
         return note;
     }
 
@@ -72,7 +76,7 @@ public final class ScannerRecord {
         this.note = note;
     }
 
-    private List<String> getMimeTypes() {
+    public List<String> getMimeTypes() {
         return mimeTypes;
     }
 
@@ -80,7 +84,7 @@ public final class ScannerRecord {
         this.mimeTypes = mimeTypes;
     }
 
-    private List<String> getColorSpace() {
+    public List<String> getColorSpace() {
         return colorSpace;
     }
 
@@ -88,15 +92,15 @@ public final class ScannerRecord {
         this.colorSpace = colorSpace;
     }
 
-    private List<String> getInputSource() {
+    public List<String> getInputSource() {
         return inputSource;
     }
 
-    void setInputSource(List<String> inputSource) {
+    public void setInputSource(List<String> inputSource) {
         this.inputSource = inputSource;
     }
 
-    private String getDuplex() {
+    String getDuplex() {
         return duplex;
     }
 
@@ -108,6 +112,8 @@ public final class ScannerRecord {
     public String toString() {
         return "ScannerRecord{" +
                 "uuid='" + uuid + '\'' +
+                ", addresses=" + addresses +
+                ", port=" + port +
                 ", version='" + version + '\'' +
                 ", adminUrl='" + adminUrl + '\'' +
                 ", representation='" + representation + '\'' +

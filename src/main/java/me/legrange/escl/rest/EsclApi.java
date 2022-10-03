@@ -2,6 +2,7 @@ package me.legrange.escl.rest;
 
 import me.legrange.escl.ScanSettings;
 import me.legrange.escl.ScannerCapabilities;
+import me.legrange.escl.ScannerStatus;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -19,8 +20,8 @@ public class EsclApi {
     private final EsclService escl;
 
     public static void main(String[] args) throws EsclException {
- //       EsclApi api = new EsclApi("http://192.168.1.30/eSCL/");
-        EsclApi api = new EsclApi("http://192.168.1.198/eSCL/");
+        EsclApi api = new EsclApi("http://192.168.1.30/eSCL/");
+ //       EsclApi api = new EsclApi("http://192.168.1.198/eSCL/");
 //     System.out.println(api.getScannerCapabilities());
       System.out.println(api.getScannerStatus());
 //        var settings = new ScanSettings();

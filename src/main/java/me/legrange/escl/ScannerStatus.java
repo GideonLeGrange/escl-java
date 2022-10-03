@@ -1,4 +1,4 @@
-package me.legrange.escl.rest;
+package me.legrange.escl;
 
 import me.legrange.escl.JobInfo;
 import org.simpleframework.xml.Element;
@@ -14,7 +14,7 @@ public class ScannerStatus {
     private String state;
     @Element(name = "AdfState", required = false)
     private String adfState;
-    @ElementList(name = "Jobs", type = JobInfo.class, entry = "JobInfo")
+    @ElementList(name = "Jobs", type = JobInfo.class, entry = "JobInfo", required = false)
     private List<JobInfo> jobs;
 
 
