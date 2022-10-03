@@ -117,13 +117,15 @@ public class EsclApi {
             HttpClient http = HttpClient.newBuilder()
                     .version(HttpClient.Version.HTTP_1_1)
                     .build();
+            String location = res.headers().get("Location");
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(res.headers().get("Location")))
+                    .uri(URI.create(location +"/NextDocument"))
                     .timeout(Duration.ofMinutes(2))
                     .header("TE", "chunked")
                     .GET()
                     .build();
             http.send(request, HttpResponse.BodyHandlers.ofFile(Path.of("/Users/gideon/scan.pdf")));
+            System.out.println();
         } catch (IOException | InterruptedException ex) {
             throw new EsclException(format("IO error calling eSCL (%s)", ex.getMessage()), ex);
         }
