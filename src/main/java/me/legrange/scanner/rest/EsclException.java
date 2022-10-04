@@ -1,4 +1,4 @@
-package me.legrange.escl.rest;
+package me.legrange.scanner.rest;
 
 public final class EsclException extends Exception {
 

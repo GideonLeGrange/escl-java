@@ -1,12 +1,11 @@
-package me.legrange.escl.rest;
+package me.legrange.scanner.rest;
 
 import com.google.gson.GsonBuilder;
-import me.legrange.escl.JobInfo;
-import me.legrange.escl.Platen;
-import me.legrange.escl.ScanRegion;
-import me.legrange.escl.ScanSettings;
-import me.legrange.escl.ScannerCapabilities;
-import me.legrange.escl.ScannerStatus;
+import me.legrange.scanner.escl.JobInfo;
+import me.legrange.scanner.escl.ScanRegion;
+import me.legrange.scanner.escl.ScanSettings;
+import me.legrange.scanner.escl.ScannerCapabilities;
+import me.legrange.scanner.escl.ScannerStatus;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -14,24 +13,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
@@ -49,8 +39,7 @@ public class EsclApi {
         var status = api.getScannerStatus();
         if (!status.getState().equals("Idle")) {
             var zombies = status.getJobs().stream()
-                    .filter(job -> !job.getState().equals("Canceled"))
-                    .collect(Collectors.toList());
+                    .filter(job -> !job.getState().equals("Canceled")).toList();
             for (var zombie : zombies) {
                 System.out.printf("Cancelling job %s\n", zombie.getUuid());
                 api.cancelScanJob(zombie);
@@ -119,7 +108,7 @@ public class EsclApi {
                     .build();
             String location = res.headers().get("Location");
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(location +"/NextDocument"))
+                    .uri(URI.create(location + "/NextDocument"))
                     .timeout(Duration.ofMinutes(2))
                     .header("TE", "chunked")
                     .GET()
@@ -131,18 +120,22 @@ public class EsclApi {
         }
     }
 
+    /** Cancel a scan job
+     *
+     * @param job The job to cancel
+     * @throws EsclException Thrown if there is an error.
+     */
     public void cancelScanJob(JobInfo job) throws EsclException {
         call(escl.cancelScanJob(job.getUuid()));
     }
 
-    private String extractJobId(String header) throws EsclException {
-        int idx = header.lastIndexOf("/");
-        if (idx < 0) {
-            throw new EsclException(format("Cannot find job ID in '%s'", header));
-        }
-        return header.substring(idx + 1);
-    }
-
+    /** Call a Retrofit service method
+     *
+     * @param call The call
+     * @param <T> The type of return daya
+     * @return The result
+     * @throws EsclException Thrown if there is an error.
+     */
     private <T> T call(Call<T> call) throws EsclException {
         try {
             Response<T> res = call.execute();
@@ -157,7 +150,6 @@ public class EsclApi {
         } catch (IOException ex) {
             throw new EsclException(format("IO error calling eSCL (%s)", ex.getMessage()), ex);
         }
-
     }
 
 

@@ -1,4 +1,4 @@
-package me.legrange.escl.discovery;
+package me.legrange.scanner.discovery;
 
 import java.util.List;
 

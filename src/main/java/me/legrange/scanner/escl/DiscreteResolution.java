@@ -1,4 +1,4 @@
-package me.legrange.escl;
+package me.legrange.scanner.escl;
 
 import org.simpleframework.xml.Element;
 
@@ -17,11 +17,4 @@ public class DiscreteResolution {
         return yResolution;
     }
 
-    @Override
-    public String toString() {
-        return "DiscreteResolution{" +
-                "xResolution=" + xResolution +
-                ", yResolution=" + yResolution +
-                '}';
-    }
 }

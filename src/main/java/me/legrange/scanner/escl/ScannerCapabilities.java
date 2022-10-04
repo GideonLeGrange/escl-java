@@ -1,6 +1,5 @@
-package me.legrange.escl;
+package me.legrange.scanner.escl;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
 
 public class ScannerCapabilities {
 

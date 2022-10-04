@@ -1,6 +1,5 @@
-package me.legrange.escl;
+package me.legrange.scanner.escl;
 
-import me.legrange.escl.JobInfo;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 

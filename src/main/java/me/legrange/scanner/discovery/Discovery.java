@@ -1,4 +1,4 @@
-package me.legrange.escl.discovery;
+package me.legrange.scanner.discovery;
 
 import net.straylightlabs.hola.dns.Domain;
 import net.straylightlabs.hola.sd.Query;
