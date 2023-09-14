@@ -5,6 +5,7 @@ import net.straylightlabs.hola.sd.Query;
 import net.straylightlabs.hola.sd.Service;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,9 +28,9 @@ final class Discovery {
 
     Set<ScannerRecord> findScanners() throws DiscoveryException {
         var insecure = findScanners("_uscan._tcp").stream()
-                .collect(Collectors.toMap(rec -> rec.getUuid(), rec -> rec));
+                .collect(Collectors.toMap(ScannerRecord::getUuid, rec -> rec));
         var secure = findScanners("_uscans._tcp").stream()
-                .collect(Collectors.toMap(rec -> rec.getUuid(), rec -> rec));
+                .collect(Collectors.toMap(ScannerRecord::getUuid, rec -> rec));
         var res = new HashMap<String, ScannerRecord>();
         res.putAll(insecure);
         res.putAll(secure);
@@ -45,7 +46,7 @@ final class Discovery {
             for (var instance : instances) {
                 var rec = new ScannerRecord(instance.lookupAttribute("UUID"),
                         instance.getAddresses().stream()
-                                .map(addr -> addr.getHostAddress()).collect(Collectors.toList()),
+                                .map(InetAddress::getHostAddress).collect(Collectors.toList()),
                         instance.getPort());
                 rec.setVersion(instance.lookupAttribute("txtvers"));
                 rec.setAdminUrl(instance.lookupAttribute("adminurl"));
