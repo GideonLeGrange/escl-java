@@ -63,9 +63,10 @@ public class EsclApi {
         var settings = new ScanSettings();
         var platen = caps.getPlaten();
 
-        settings.setInputSource("Platen");
+//        settings.setInputSource("Platen");
         settings.setVersion("2.6");
         settings.setIntent("Document");
+        settings.setInputSource("Adf");
         settings.setScanRegions(List.of(
                 new ScanRegion(
                         platen.getPlatenInputCaps().getMaxWidth(),
